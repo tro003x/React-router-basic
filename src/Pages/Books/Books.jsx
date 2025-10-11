@@ -1,9 +1,21 @@
-import React from 'react';
+// import React, { useEffect, useState } from 'react';
 
 const Books = () => {
+    // const [allBooks, setAllBooks] = useState([]);
+
+    // useEffect(() => {
+    //     fetch('/booksData.json')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setAllBooks(data);
+    //             console.log(data);
+    //         })
+    //         .catch(err => console.error(err));
+    // }, []); // Add empty dependency array!
+
     return (
         <div>
-            <h1>Boooooooks</h1>
+            <h1 className="text-3xl text-center p-6">Books</h1>
         </div>
     );
 };

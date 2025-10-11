@@ -1,24 +1,18 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router';
 import Banner from '../../Component/Banner/Banner';
 import Books from '../Books/Books';
 
 const Home = () => {
-    const [allBooks, setAllBooks] = useState([]);
 
-    useEffect(() => {
-        fetch('/booksData.json')
-            .then(res => res.json())
-            .then(data => {
-                setAllBooks(data);
-                console.log(data);
-            })
-            .catch(err => console.error(err));
-    }, []);
+    const data = useLoaderData();
+    console.log(data)
+   
 
     return (
         <div>
             <Banner />
-            <Books books={allBooks} />
+            <Books/>
         </div>
     );
 };
