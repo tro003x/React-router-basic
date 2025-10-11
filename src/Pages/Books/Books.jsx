@@ -1,7 +1,7 @@
-// import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 
 const Books = () => {
-    // const [allBooks, setAllBooks] = useState([]);
+    const [allBooks, setAllBooks] = useState([]);
 
     // useEffect(() => {
     //     fetch('/booksData.json')
@@ -16,6 +16,11 @@ const Books = () => {
     return (
         <div>
             <h1 className="text-3xl text-center p-6">Books</h1>
+            <Suspense>
+                {
+                    data.map(singleBook)=> <Books key={singleBook.bookID} singleBook = {singleBook}></Books>
+                }
+            </Suspense>
         </div>
     );
 };

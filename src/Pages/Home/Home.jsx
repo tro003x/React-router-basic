@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <div>
             <Banner />
-            <Books/>
+            <Books data={data}/>
         </div>
     );
 };
