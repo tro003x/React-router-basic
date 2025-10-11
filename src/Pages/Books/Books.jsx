@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect, useState } from 'react';
+import SBooks from '../sBooks/sBooks';
 
-const Books = () => {
+const Books = ({data}) => {
     const [allBooks, setAllBooks] = useState([]);
 
     // useEffect(() => {
@@ -17,9 +18,12 @@ const Books = () => {
         <div>
             <h1 className="text-3xl text-center p-6">Books</h1>
             <Suspense>
-                {
-                    data.map(singleBook)=> <Books key={singleBook.bookID} singleBook = {singleBook}></Books>
+               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+                 {
+                   data.map((singleBook)=> <SBooks key={singleBook.bookId} singleBook = {singleBook}></SBooks>)
+            
                 }
+               </div>
             </Suspense>
         </div>
     );
