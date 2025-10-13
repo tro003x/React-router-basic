@@ -4,15 +4,7 @@ import SBooks from '../sBooks/sBooks';
 const Books = ({data}) => {
     const [allBooks, setAllBooks] = useState([]);
 
-    // useEffect(() => {
-    //     fetch('/booksData.json')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setAllBooks(data);
-    //             console.log(data);
-    //         })
-    //         .catch(err => console.error(err));
-    // }, []); // Add empty dependency array!
+    
 
     return (
         <div>
