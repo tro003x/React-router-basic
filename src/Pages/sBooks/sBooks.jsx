@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaRegStarHalfStroke } from "react-icons/fa6";
-import { Links } from 'react-router';
+import { Link, Links } from 'react-router';
 
 
 const SBooks = ({singleBook}) => {
@@ -8,8 +8,8 @@ const SBooks = ({singleBook}) => {
     const {bookName, author, bookId, image, rating, category, yearOfPublishing, tags}= singleBook;
 
     return (
-      //  <Link to ={`/bookDetails/${bookId}`}>
-        <div className="card bg-base-100 w-96 shadow-sm border p-6">
+      <Link to ={`/bookDetails/${bookId}`}>
+      <div className="card bg-base-100 w-96 shadow-sm border p-6">
   <figure className='p-4 bg-gray-100 w-2/3 mx-auto'>
     <img className='h-[166px]'
       src={image}
@@ -31,8 +31,7 @@ const SBooks = ({singleBook}) => {
 </div>
     </div>
   </div>
-</div>
-      //  </Link>
+</div></Link>
     );
 };
 
