@@ -1,12 +1,14 @@
 import React from 'react';
 import { FaRegStarHalfStroke } from "react-icons/fa6";
+import { Links } from 'react-router';
 
 
 const SBooks = ({singleBook}) => {
     
-    const {bookName, author, image, rating, category}= singleBook;
+    const {bookName, author, bookId, image, rating, category, yearOfPublishing, tags}= singleBook;
 
     return (
+      //  <Link to ={`/bookDetails/${bookId}`}>
         <div className="card bg-base-100 w-96 shadow-sm border p-6">
   <figure className='p-4 bg-gray-100 w-2/3 mx-auto'>
     <img className='h-[166px]'
@@ -14,11 +16,15 @@ const SBooks = ({singleBook}) => {
       alt="Shoes" />
   </figure>
   <div className="card-body">
+    <div className='flex justify-center gap-10'>
+      {tags.map(tag => <button>{tag}</button>)}
+    </div>
     <h2 className="card-title">
       {bookName}
-      <div className="badge badge-secondary">NEW</div>
+      <div className="badge badge-secondary">{yearOfPublishing}</div>
     </h2>
-    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <p>By: {author}</p>
+    <div className='border-t-1 border-dashed'></div>
     <div className="card-actions justify-end">
       <div className="badge badge-outline">{category}</div>
       <div className="badge badge-outline">{rating}<FaRegStarHalfStroke />
@@ -26,6 +32,7 @@ const SBooks = ({singleBook}) => {
     </div>
   </div>
 </div>
+      //  </Link>
     );
 };
 
