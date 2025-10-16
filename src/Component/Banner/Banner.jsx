@@ -1,5 +1,6 @@
 import React from 'react';
 import bookimage from '../../assets/books.jpg'
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -10,12 +11,11 @@ const Banner = () => {
       className="max-w-sm rounded-lg shadow-2xl"
     />
     <div>
-      <h1 className="text-5xl font-bold">Box Office News!</h1>
+      <h1 className="text-5xl font-bold">Best Place for Bookish!</h1>
       <p className="py-6">
-        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-        quasi. In deleniti eaque aut repudiandae et a id nisi.
+        You can find the best collection of books including novel, fictions, fantasy, horror, romance and many more. Let's dive into the sea of knowledge.
       </p>
-      <button className="btn btn-primary">Get Started</button>
+  <Link to="/#books" className="btn btn-primary">Dive</Link>
     </div>
   </div>
 </div>
