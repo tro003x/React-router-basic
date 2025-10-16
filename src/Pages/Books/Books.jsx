@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react';
-import SBooks from '../sBooks/sBooks';
+import SBooks from '../SBooks/SBooks';
 
 const Books = ({data}) => {
     const [allBooks, setAllBooks] = useState([]);
