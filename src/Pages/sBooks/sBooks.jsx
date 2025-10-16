@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaRegStarHalfStroke } from "react-icons/fa6";
-import { Link, Links } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
 const SBooks = ({singleBook}) => {

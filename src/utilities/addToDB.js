@@ -1,5 +1,3 @@
-import { stringify } from "postcss";
-
 const getStoredBook= () =>{
     const storedBookSTR = localStorage.getItem("readlist")
 
@@ -28,4 +26,28 @@ const addToStoreDB = id =>{
     }
 
 }
-export {addToStoreDB};
+
+
+const getStoredWishlist = () => {
+    const storedWishSTR = localStorage.getItem("wishlist");
+    if (storedWishSTR) {
+        try {
+            return JSON.parse(storedWishSTR);
+        } catch {
+            return [];
+        }
+    }
+    return [];
+};
+
+const addToWishlistDB = (id) => {
+    const wishlist = getStoredWishlist();
+    if (wishlist.includes(id)) {
+        alert("Already in wishlist");
+        return;
+    }
+    wishlist.push(id);
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+};
+
+export { addToStoreDB, getStoredBook, getStoredWishlist, addToWishlistDB };
