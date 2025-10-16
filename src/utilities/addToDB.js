@@ -12,19 +12,15 @@ else{
 
 }
 
-const addToStoreDB = id =>{
-
-    const storedBookData = getStoredBook();
-
-    if(storedBookData.includes(id)){
-        alert("This ID already exists")
+const addToStoreDB = (id) => {
+    const storedBookData = (getStoredBook() || []).map(Number);
+    const numericId = Number(id);
+    if (storedBookData.includes(numericId)) {
+        return { added: false, duplicate: true };
     }
-    else {
-        storedBookData.push(id);
-        const data = JSON.stringify(storedBookData);
-        localStorage.setItem("readlist", data)
-    }
-
+    storedBookData.push(numericId);
+    localStorage.setItem("readlist", JSON.stringify(storedBookData));
+    return { added: true };
 }
 
 
@@ -41,13 +37,14 @@ const getStoredWishlist = () => {
 };
 
 const addToWishlistDB = (id) => {
-    const wishlist = getStoredWishlist();
-    if (wishlist.includes(id)) {
-        alert("Already in wishlist");
-        return;
+    const wishlist = (getStoredWishlist() || []).map(Number);
+    const numericId = Number(id);
+    if (wishlist.includes(numericId)) {
+        return { added: false, duplicate: true };
     }
-    wishlist.push(id);
+    wishlist.push(numericId);
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    return { added: true };
 };
 
 export { addToStoreDB, getStoredBook, getStoredWishlist, addToWishlistDB };

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { addToStoreDB, addToWishlistDB } from '../../utilities/addToDB';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Bookdetails = () => {
     const {id} = useParams();
     const bookId =parseInt(id);
@@ -9,11 +10,20 @@ const Bookdetails = () => {
     const singleBook = data.find(book => book.bookId === bookId);
     const {bookName, image, author, review, totalPages, rating, category, tags, publisher, yearOfPublishing} = singleBook || {};
     const handleMarkasRead = id =>{
-        
-        addToStoreDB(id)
+        const res = addToStoreDB(id);
+        if(res?.added){
+            toast("Marked as Read!");
+        } else if(res?.duplicate){
+            toast.info("Already Marked as Read");
+        }
     }
     const handleAddToWishlist = (id) => {
-        addToWishlistDB(id);
+        const res = addToWishlistDB(id);
+        if (res?.added) {
+            toast("Added to Wishlist!");
+        } else if (res?.duplicate) {
+            toast.info("Already in Wishlist");
+        }
     };
 
     return (
@@ -28,6 +38,7 @@ const Bookdetails = () => {
                 <span className='mr-2'>Pages: {totalPages}</span>
                 <span className='mr-2'>Rating: {rating}</span>
             </div>
+            <ToastContainer />
             {Array.isArray(tags) && tags.length > 0 && (
                 <div className='flex gap-2 flex-wrap'>
                     {tags.map((t) => (
@@ -38,7 +49,7 @@ const Bookdetails = () => {
             {review && <p className='text-sm leading-relaxed'>{review}</p>}
             <div>
                 <button onClick={()=> handleMarkasRead(id)} className="btn btn-success m-2">Mark As Read</button>
-                <button onDoubleClick={()=> alert('Already added to wishlist')} onClick={()=> handleAddToWishlist(id)} className="btn btn-warning m-2">Add To Wishlist</button>
+                <button onClick={()=> handleAddToWishlist(id)} className="btn btn-warning m-2">Add To Wishlist</button>
             </div>
         </div>
     );
