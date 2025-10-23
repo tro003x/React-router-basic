@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "surge:prep": "node -e \"const fs=require('fs');fs.copyFileSync('dist/index.html','dist/200.html');console.log('200.html created');\"",
+    "deploy": "npm run build && npm run surge:prep && surge dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
